@@ -1,0 +1,2 @@
+CREATE DATABASE analytics;
+GRANT ALL PRIVILEGES ON DATABASE analytics TO airflow;

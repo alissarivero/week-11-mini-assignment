@@ -1,0 +1,4 @@
+system,accuracy,f1,steps,adaptive,notes,rounds,met_target
+fixed_airflow_dag,0.8807439824945296,0.8808743169398907,8,False,Predefined ingest→clean→merge→load→single logreg,,
+simple_in_class_agents,0.6739606126914661,0.6795698924731183,3,False,"Loader → Trainer → Evaluator, one feature (humidity), no retry",,
+adaptive_langgraph,0.8807439824945296,0.8808743169398907,16,True,"Routes, retries, and expands features from intermediate accuracy",4.0,

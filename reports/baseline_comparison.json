@@ -1,0 +1,32 @@
+[
+  {
+    "system":"fixed_airflow_dag",
+    "accuracy":0.8807439825,
+    "f1":0.8808743169,
+    "steps":8,
+    "adaptive":false,
+    "notes":"Predefined ingest\u2192clean\u2192merge\u2192load\u2192single logreg",
+    "rounds":null,
+    "met_target":null
+  },
+  {
+    "system":"simple_in_class_agents",
+    "accuracy":0.6739606127,
+    "f1":0.6795698925,
+    "steps":3,
+    "adaptive":false,
+    "notes":"Loader \u2192 Trainer \u2192 Evaluator, one feature (humidity), no retry",
+    "rounds":null,
+    "met_target":null
+  },
+  {
+    "system":"adaptive_langgraph",
+    "accuracy":0.8807439825,
+    "f1":0.8808743169,
+    "steps":16,
+    "adaptive":true,
+    "notes":"Routes, retries, and expands features from intermediate accuracy",
+    "rounds":4.0,
+    "met_target":null
+  }
+]

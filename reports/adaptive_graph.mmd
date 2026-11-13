@@ -1,0 +1,30 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	loader(loader)
+	quality(quality)
+	features(features)
+	trainer(trainer)
+	evaluator(evaluator)
+	router(router)
+	retry(retry)
+	reporter(reporter)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> loader;
+	evaluator --> router;
+	features --> trainer;
+	loader --> quality;
+	quality --> features;
+	retry --> router;
+	router -.-> features;
+	router -. &nbsp;fail&nbsp; .-> reporter;
+	router -.-> retry;
+	trainer --> evaluator;
+	reporter --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

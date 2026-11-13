@@ -1,0 +1,68 @@
+{
+  "target_accuracy": 0.88,
+  "rounds": 4,
+  "best_accuracy": 0.8807439824945296,
+  "best_f1": 0.8808743169398907,
+  "final_accuracy": 0.8807439824945296,
+  "final_f1": 0.8808743169398907,
+  "final_model": "logreg",
+  "history": [
+    {
+      "round": 1,
+      "stage": 0,
+      "features": [
+        "humidity"
+      ],
+      "model_name": "logreg",
+      "accuracy": 0.6739606126914661,
+      "f1": 0.6795698924731183,
+      "decision": "add_features"
+    },
+    {
+      "round": 2,
+      "stage": 1,
+      "features": [
+        "humidity",
+        "wind_kph"
+      ],
+      "model_name": "logreg",
+      "accuracy": 0.6761487964989059,
+      "f1": 0.6824034334763949,
+      "decision": "add_features"
+    },
+    {
+      "round": 3,
+      "stage": 2,
+      "features": [
+        "temp_c",
+        "precip_mm",
+        "is_weekend"
+      ],
+      "model_name": "logreg",
+      "accuracy": 0.7603938730853391,
+      "f1": 0.76013143483023,
+      "decision": "add_features"
+    },
+    {
+      "round": 4,
+      "stage": 3,
+      "features": [
+        "temp_c",
+        "humidity",
+        "wind_kph",
+        "precip_mm",
+        "is_weekend",
+        "month",
+        "day_of_week",
+        "station_id",
+        "weather_code"
+      ],
+      "model_name": "logreg",
+      "accuracy": 0.8807439824945296,
+      "f1": 0.8808743169398907,
+      "decision": "stop"
+    }
+  ],
+  "met_target": true,
+  "n_rows": 3654
+}

@@ -1,0 +1,100 @@
+[
+  {
+    "case_id": "T1_happy_path",
+    "passed": true,
+    "score": 0.8807,
+    "threshold": 0.8,
+    "expected": "final accuracy >= 0.80 and met_target is true",
+    "observed": "score=0.8807 (threshold 0.8)",
+    "description": "Clean merged data should train a model above 0.80 accuracy.",
+    "scoring": "hold-out accuracy of the adaptive graph",
+    "input": {
+      "target_accuracy": 0.8,
+      "max_rounds": 5
+    }
+  },
+  {
+    "case_id": "T2_feature_expansion",
+    "passed": true,
+    "score": 0.2068,
+    "threshold": 0.03,
+    "expected": "accuracy increases after Tuner/router expands the feature set",
+    "observed": "score=0.2068 (threshold 0.03)",
+    "description": "High target should cause the router to add features across rounds.",
+    "scoring": "final accuracy minus first-round accuracy",
+    "input": {
+      "target_accuracy": 0.9,
+      "max_rounds": 4
+    }
+  },
+  {
+    "case_id": "T3_retry_failed_step",
+    "passed": true,
+    "score": 1.0,
+    "threshold": 1.0,
+    "expected": "retry node re-enters the failed step and the run can continue",
+    "observed": "score=1.0000 (threshold 1.0)",
+    "description": "Router retries a failed evaluator/trainer step instead of aborting.",
+    "scoring": "1.0 if retry executed, else 0.0",
+    "input": {
+      "failed_node": "evaluator",
+      "last_error": "forced missing bundle"
+    }
+  },
+  {
+    "case_id": "T4_coordination_order",
+    "passed": true,
+    "score": 1.0,
+    "threshold": 1.0,
+    "expected": "n_rows > 0, history non-empty, reporter wrote met_target",
+    "observed": "score=1.0000 (threshold 1.0)",
+    "description": "Loader, evaluator, and reporter all participate in one run.",
+    "scoring": "fraction of required coordination checkpoints observed",
+    "input": {
+      "target_accuracy": 0.7,
+      "max_rounds": 2
+    }
+  },
+  {
+    "case_id": "T5_intermediate_quality",
+    "passed": true,
+    "score": 0.674,
+    "threshold": 0.52,
+    "expected": "round-1 accuracy >= 0.52",
+    "observed": "score=0.6740 (threshold 0.52)",
+    "description": "Even the first (weak humidity-only) model should beat a coin flip.",
+    "scoring": "first-round hold-out accuracy",
+    "input": {
+      "target_accuracy": 0.99,
+      "max_rounds": 3
+    }
+  },
+  {
+    "case_id": "T6_simple_agent_baseline",
+    "passed": true,
+    "score": 0.674,
+    "threshold": 0.5,
+    "expected": "accuracy is a finite score on the cleaned table",
+    "observed": "score=0.6740 (threshold 0.5)",
+    "description": "In-class style single-pass agent (no tuner) still produces a metric.",
+    "scoring": "single-pass logreg accuracy",
+    "input": {
+      "stage": 0,
+      "model": "logreg"
+    }
+  },
+  {
+    "case_id": "T7_fixed_airflow_baseline",
+    "passed": true,
+    "score": 0.8807,
+    "threshold": 0.8,
+    "expected": "baseline DAG model accuracy >= 0.80",
+    "observed": "score=0.8807 (threshold 0.8)",
+    "description": "Fixed pipeline analysis (same as the Airflow DAG analyze task) meets 0.80.",
+    "scoring": "accuracy from pipeline.analyze.run_analysis",
+    "input": {
+      "model": "logistic_regression",
+      "features": "full"
+    }
+  }
+]
